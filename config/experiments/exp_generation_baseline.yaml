@@ -1,0 +1,36 @@
+# Text Generation Few-Shot Baseline Experiment Configuration
+
+experiment:
+  name: "Text Summarization & Generation FSL Trial"
+  description: "Evaluating generation BLEU/ROUGE using 1-shot instruction prompts"
+  seed: 303
+  repeated_trials: 3
+  output_dir: "results"
+
+dataset:
+  name: "cnn_dailymail"
+  task: "text_generation"
+  split: "test"
+  sample_size: 100
+
+prompt:
+  strategy: "instruction"
+  instruction_text: "Summarize the given article in 3 bullet points."
+
+few_shot:
+  num_examples: 1
+  ordering: "performance_based"
+  diversity: "low"
+
+model:
+  name: "claude-3-haiku"
+  provider: "anthropic"
+  temperature: 0.2
+  max_tokens: 1024
+
+evaluation:
+  metrics:
+    - "bleu"
+    - "rouge"
+    - "latency_seconds"
+    - "token_usage"

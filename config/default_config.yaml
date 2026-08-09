@@ -1,0 +1,38 @@
+# Few-Shot Learning (FSL) Experimentation Framework Default Configuration
+
+experiment:
+  name: "Baseline Few-Shot Evaluation"
+  description: "Initial research trial assessing FSL performance across tasks"
+  seed: 42
+  repeated_trials: 3
+  output_dir: "results"
+
+dataset:
+  name: "ag_news"
+  task: "text_classification"
+  split: "test"
+  sample_size: 100
+
+prompt:
+  strategy: "hybrid"  # Options: instruction, example_based, hybrid
+  instruction_text: "Classify the input text into one of the designated categories."
+
+few_shot:
+  num_examples: 3      # Options: 1, 3, 5
+  ordering: "random"   # Options: original, random, performance_based
+  diversity: "medium"  # Options: low, medium, high
+
+model:
+  name: "gpt-3.5-turbo"
+  provider: "openai"
+  temperature: 0.0
+  max_tokens: 512
+
+evaluation:
+  metrics:
+    - "accuracy"
+    - "precision"
+    - "recall"
+    - "f1_score"
+    - "latency_seconds"
+    - "token_usage"

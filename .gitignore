@@ -1,0 +1,13 @@
+__pycache__
+.env
+bin
+din
+metadata
+processed
+raw
+deliverable_helpers
+deliverables
+runs
+logs
+*.log
+
